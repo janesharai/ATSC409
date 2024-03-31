@@ -23,4 +23,20 @@ def create_interp_T(lat):
     table_Ti = np.array([26.4, 26.1, 22.9, 16.2, 8.8, 2.2, -5.1, -12.3, -16.9])
     table_lats = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90])
     return np.interp(lat, table_lats, table_Ti)
-    
+
+
+def create_interp_solar(lat):
+    """
+    Input: takes in the lat array.
+    Output: spits out the interpolated solar insolation array
+    """
+    deg2rad = np.pi/180
+    s_i = 1366*np.cos(lat*deg2rad) #solar constant is dependant per latitude
+
+    table_solar_fractions = np.array([1.219, 1.189, 1.120, 1.021, 0.892, 0.770, 0.624, 0.531, 0.500])
+    table_lats = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90])
+    interp_solar_fractions = np.interp(lat, table_lats, table_solar_fractions)
+
+    interp_solar_insolation = (s_i/4)*interp_solar_fractions
+
+    return interp_solar_insolation

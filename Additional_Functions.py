@@ -31,7 +31,7 @@ def create_interp_solar(lat):
     Output: spits out the interpolated solar insolation array
     """
     deg2rad = np.pi/180
-    s_i = 1366*np.cos(lat*deg2rad) #solar constant is dependant per latitude
+    s_i = 1366
 
     table_solar_fractions = np.array([1.219, 1.189, 1.120, 1.021, 0.892, 0.770, 0.624, 0.531, 0.500])
     table_lats = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90])

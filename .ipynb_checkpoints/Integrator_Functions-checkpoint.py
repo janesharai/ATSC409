@@ -90,7 +90,6 @@ class Integrator:
         # vector k1 in lab4 equation 3.9
         derivArray[0, :] = self.derivs5(yold, timeStep)[:]
     
-
         # calculate step
         # c1=c_i in lab 4 notation, but c2=c_i - c^*_i
 

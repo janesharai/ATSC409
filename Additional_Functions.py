@@ -1,10 +1,11 @@
 import numpy as np
 
-def temp_ave(T,lat):
+def temp_ave(T):
     """
     input: temperature distribution array in Kelvin from previous timestep and latitude array in degrees      (both of length 91)
     output: average temperature accross the globe in Kelvin (float)
     """
+    lat = np.arange(0, 91, 1)
     deg2rad = np.pi/180
     
     denominator = np.sum(np.cos(lat*deg2rad))
@@ -40,3 +41,13 @@ def create_interp_solar(lat):
     interp_solar_insolation = (s_i/4)*interp_solar_fractions
 
     return interp_solar_insolation
+
+def create_interp_albedo(lat):
+    """
+    Input: takes in the lat array.
+    Output: spits out the interpolated solar insolation array
+    """
+    table_albedo = np.array([0.254, 0.248, 0.272, 0.309, 0.357, 0.407,0.452, 0.544, 0.589])
+    table_lats = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90])
+    return np.interp(lat, table_lats, table_albedo)
+    

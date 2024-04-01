@@ -1,7 +1,7 @@
 timevars:
   dt: 0.1
   tstart: 0.0
-  tend: 1.1
+  tend: 604800
 adaptvars:
   dtpassmin: 0.1
   dtpassmax: 5.0

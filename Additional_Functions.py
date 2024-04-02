@@ -32,7 +32,7 @@ def create_interp_solar(lat):
     Output: spits out the interpolated solar insolation array
     """
     deg2rad = np.pi/180
-    s_i = 1366
+    s_i = 1700
 
     table_solar_fractions = np.array([1.219, 1.189, 1.120, 1.021, 0.892, 0.770, 0.624, 0.531, 0.500])
     table_lats = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90])
@@ -50,4 +50,16 @@ def create_interp_albedo(lat):
     table_albedo = np.array([0.254, 0.248, 0.272, 0.309, 0.357, 0.407,0.452, 0.544, 0.589])
     table_lats = np.array([10, 20, 30, 40, 50, 60, 70, 80, 90])
     return np.interp(lat, table_lats, table_albedo)
-    
+
+def create_clouds():
+    """
+    Input: None
+    Output: returns cloud array
+    """
+    equator = np.array([0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9, 0.9, 0.9]) # 11 elements
+    tropical = np.full(20,0.65) # 20 elements
+    mid_latitude = np.full(30, 0.3) # 30 elements
+    sub_polar = np.full(20, 0.12) # 20 elements
+    polar = np.full(10, 0.02) # 10 elements
+    clouds = np.concatenate((equator,tropical, mid_latitude, sub_polar, polar))
+    return clouds
